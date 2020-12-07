@@ -26,7 +26,7 @@ npm install js-yaml --no-save
 ```js |{type:'file', path: 'yaml.js'}
 const yaml = require('js-yaml');
 const fs = require('fs');
-const doc = yaml.safeLoad(fs.readFileSync('resources/tree.yaml', 'utf8'));
+const doc = yaml.safeLoad(fs.readFileSync('resources/objects.yaml', 'utf8'));
 for( var obj of doc.objects )
 {
    console.log( obj );
