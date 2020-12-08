@@ -88,6 +88,8 @@ for( var obj of doc.objects )
 
 ### Checking your work
 
+5. To verify your solution is correct, run the following cell to check your your generated files.
+
 ```bash | {type: 'command', shell: 'bash'}
 # Checking for files with content
 grep "for this object" objects/biblo.txt
