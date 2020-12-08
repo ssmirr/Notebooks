@@ -1,8 +1,6 @@
-# Processing CLI arguments
+# CLI arguments in nodejs
 
-```bash | {type: 'command'}
-node -e "console.log( process.argv )"
-```
+## Overview 
 
 Arguments are typically provided to a program in an array of strings. There are several types of arguments that programs receive.
 
@@ -15,10 +13,25 @@ Options can be combined, such as `-a -l` being expressed as `-al`, which means t
 Finally, some commands expect other commands or complex input. In some shells, the syntax `--` can be used to help indicate when to stop parsing options. For example, `ls -- -l` will look for a file named `-l`. This is useful for when writing more complex commands, such as `ssh root@me -- ls -l`.
 
 
+## Processing CLI arguments
+
+In nodejs, the CLI arguments are made available in an array called `process.argv`.
+
+Run this code. What do you think it will contain?
+
+```bash | {type: 'command'}
+node -e "console.log( process.argv )"
+```
+
+Because of all the complexity associated with handling the variety of arguments a program can receive, it is best to use a library or tool to help you parse and act on them. We're going to be using [yargs](https://github.com/yargs/yargs).
+
+Install the `yargs` package with the following command.
+
 ```bash | {type: 'command', failed_when: 'exitCode != 0' }
 npm install yargs --no-save
 ```
 
+1. Let's first create our sample program and see what it does.
 
 ```js | {type: 'file', path: 'cli.js'}
 require('yargs')
@@ -36,14 +49,20 @@ require('yargs')
   .argv
 ```
 
-Try running your program with `node cli.js hello name`
+2. Try running your program with `node cli.js hello name`
 
-**Modify the program to accept the and print out the following options**:
+```bash | {type: 'repl'}
+```
+
+3. Modify the program to accept the and print out the following options:
 
 * node cli.js hello [name]
 * node cli.js -i
 * node cli.js -o file
 
+### Verification
 
-```bash | {type: 'repl'}
+```bash | {type: 'command'}
+node cli.js hello bob
+node cli.js -i
 ```
