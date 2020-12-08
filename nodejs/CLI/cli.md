@@ -36,33 +36,51 @@ npm install yargs --no-save
 ```js | {type: 'file', path: 'cli.js'}
 require('yargs')
   .usage('$0 <cmd> [args]')
-  .command('hello [name]', 'welcome ter yargs!', (yargs) => {
-    yargs.positional('name', {
+  .command('area [type]', "calc area", (yargs) => 
+  {
+    yargs.positional('type', {
       type: 'string',
-      default: 'Cambi',
-      describe: 'the name to say hello to'
+      default: 'rect',
+      describe: 'The type of shape to calculate area.'
     })
-  }, function (argv) {
-    console.log('hello', argv.name, 'welcome to yargs!')
-  })
+    .option("w", {
+      describe: "The width of the area.",
+      type: "number"
+    })
+    .option("h", {
+      describe: "The height of the area.",
+      type: "number"
+    })
+  }, function (argv) { calc(argv) } )
   .help()
   .argv
+
+function calc(argv) {
+  // Unpack into variables
+  let {w,h,r,type} = argv;
+
+  if( type == "rect") {
+    console.log( `Area: ${w * h}`);
+  }
+}
+
 ```
 
-2. Try running your program with `node cli.js hello name`
+2. Try running your program with `node cli.js area -w 5 -h 3`
 
 ```bash | {type: 'repl'}
 ```
 
-3. Modify the program to accept the and print out the following options:
+3. Modify the program to accept the and print out the following arguments:
 
-* node cli.js hello [name]
-* node cli.js -i
-* node cli.js -o file
+* `-v`. Print out all the arguments received.
+* `area circle -r <num>`. _Hint_: You can use ( π * r<sup>2</sup> ).
 
 ### Verification
 
+4. To verify your solution is correct, run the following cell to check your code.
+
 ```bash | {type: 'command'}
-node cli.js hello bob
-node cli.js -i
+node cli.js area -h 3 -w 5 -v
+node cli.js area circle -r 3 -v
 ```
