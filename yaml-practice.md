@@ -57,6 +57,7 @@ npm install js-yaml --no-save
 
 3. Create the following nodejs script by clicking the edit button in the notebook cell. Any updates you make will be updated live in the file.
 
+
 ```js |{type:'file', path: 'yaml.js'}
 const yaml = require('js-yaml');
 const fs = require('fs');
@@ -71,6 +72,15 @@ for( var obj of doc.objects )
 }
 ```
 
+**Useful functions**:
+
+  * `fs.writeFileSync(path, stringContent)`
+  * `fs.existsSync( path )`
+  * `fs.mkdirSync( path )`
+  * `fs.chmodSync(path, octalValue)`
+ 
+
+
 4. Run `node yaml.js` to run your code. You may also use the terminal to help you debug any problems.
 
 ```bash|{type:'repl'}
@@ -78,7 +88,17 @@ for( var obj of doc.objects )
 
 ### Checking your work
 
-```bash | {type: 'command'}
-grep "for this object" biblo.txt
+```bash | {type: 'command', shell: 'bash'}
+# Checking for files with content
+grep "for this object" objects/biblo.txt
+grep "string" objects/tango.txt
+grep "free" objects/aditi.txt
+# Checking read-only property
+STAT=$(stat objects/aditi.txt -c%A)
+if [[ $STAT == "-r--r--r--" ]]; then
+    echo "Read only!";
+else
+    echo "Not read only: $STAT" || exit 1
+fi
 ```
 
