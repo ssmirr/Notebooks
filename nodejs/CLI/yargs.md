@@ -4,7 +4,7 @@
 node -e "console.log( process.argv )"
 ```
 
-Parameters general come in two families:
+Arguments are typically provided to a program in an array of strings. There are several types of arguments that programs receive.
 
 * **options**: are modifiers to commands, like `ls -l`.
 * **parameters**: provide information to commands, such as `-o output_dir`.
