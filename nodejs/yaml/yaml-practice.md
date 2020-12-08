@@ -88,7 +88,7 @@ for( var obj of doc.objects )
 
 ### Checking your work
 
-5. To verify your solution is correct, run the following cell to check your your generated files.
+5. To verify your solution is correct, run the following cell to check your code.
 
 ```bash | {type: 'command', shell: 'bash'}
 # Checking for files with content

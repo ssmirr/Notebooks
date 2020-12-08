@@ -71,7 +71,7 @@ function calc(argv) {
 ```bash | {type: 'repl'}
 ```
 
-3. Modify the program to accept the and print out the following arguments:
+3. Modify the program to accept and print out the following arguments:
 
 * `-v`. Print out all the arguments received.
 * `area circle -r <num>`. _Hint_: You can use ( π * r<sup>2</sup> ).
