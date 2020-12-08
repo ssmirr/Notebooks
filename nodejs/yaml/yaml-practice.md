@@ -67,7 +67,7 @@ for( var obj of doc.objects )
    console.log( obj );
    // TODO: Create file with obj.name, filled with obj.content inside an "objects" directory.
 
-   // If readonly attribute exists, remove writable attribute. 
+   // TODO: If readonly attribute exists, remove writable attribute. 
    
 }
 ```
