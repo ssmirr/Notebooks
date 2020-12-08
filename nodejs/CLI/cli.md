@@ -1,3 +1,9 @@
+<!--
+setup:
+  local:
+    cwd: .
+-->
+
 # CLI arguments in nodejs
 
 ## Overview 
@@ -5,7 +11,8 @@
 Arguments are typically provided to a program in an array of strings. There are several types of arguments that programs receive.
 
 * **options**: are modifiers to commands, like `ls -l`.
-* **parameters**: provide information to commands, such as `-o output_dir`.
+* **parameters**: provide information t$ pwd
+/home/pi/projects/Notebooks/nodejs/CLIo commands, such as `-o output_dir`.
 * **subcommands**: allow a program to operate in multiple modes, and support more complex families of commands like `git commit` or `git submodule pull`.
 
 Options can be combined, such as `-a -l` being expressed as `-al`, which means the program must be able to handle multiple ways of receiving options. Some parameters can appear anywhere, while others are to be expected to appear at a specific _position_ as part of the command sequence.

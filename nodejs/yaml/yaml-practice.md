@@ -1,3 +1,9 @@
+<!--
+setup:
+  local:
+    cwd: .
+-->
+
 # Yaml
 
 Many configuration tools, need a syntax for describing structured for commands and properties of systems. For example, Ansible playbooks are essentially files formatted as [yaml](http://docs.ansible.com/ansible/YAMLSyntax.html). Some pipelines architectures, such as "gitops", are driven entirely by declarative logic provided in JSON or YAML files.
