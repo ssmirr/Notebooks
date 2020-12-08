@@ -93,6 +93,7 @@ for( var obj of doc.objects )
 grep "for this object" objects/biblo.txt
 grep "string" objects/tango.txt
 grep "free" objects/aditi.txt
+
 # Checking read-only property
 STAT=$(stat objects/aditi.txt -c%A)
 if [[ $STAT == "-r--r--r--" ]]; then
