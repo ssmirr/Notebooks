@@ -10,5 +10,9 @@ When writing scripts or your own configuration tools, you will often find that y
 
 
 
-
+```js| {type:'script'}
+const child = require('child_process')
+let output = child.execSync("date").toString();
+console.log( output );
+```
 
