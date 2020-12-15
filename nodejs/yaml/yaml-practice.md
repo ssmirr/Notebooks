@@ -89,6 +89,7 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 const dir = require('os').tmpdir();
 const doc = yaml.safeLoad(fs.readFileSync(`${dir}/resources/objects.yaml`, 'utf8'));
+
 for( var obj of doc.objects )
 {
     console.log( obj );
@@ -111,11 +112,11 @@ grep "string" /tmp/objects/tango.txt
 grep "free" /tmp/objects/aditi.txt
 
 # Checking read-only property
-STAT=$(stat objects/aditi.txt -c%A)
+STAT=$(stat /tmp/objects/aditi.txt -c%A)
 if [[ $STAT == "-r--r--r--" ]]; then
     echo "Read only!";
 else
-    echo "Not read only: $STAT" || exit 1
+    echo && echo "Not read only: $STAT" && exit 1
 fi
 ```
 
