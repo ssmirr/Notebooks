@@ -38,9 +38,11 @@ The same content could also be represented as JSON, as follows:
 
 You can read a [nice overview](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) on the syntax, especially rules related to representing strings. But first, we will make a first pass in understanding it by parsing and doing something with YAML. 
 
-1. Create the following yaml document by clicking the edit button in the notebook cell. Any updates you make will be updated live in the file.
+1. Create the following yaml document by *clicking* the edit button 📝 in the notebook cell. 
 
-```yaml |{type:'file', path: 'resources/objects.yaml'}
+   Any updates you make will inside the cell be updated in the file, after you leave focus.
+
+```yaml |{type:'file', path: '/tmp/resources/objects.yaml'}
 objects:
    - name: biblo.txt
      content: >
@@ -55,19 +57,21 @@ objects:
 
 ```
 
-2. Let's install a package for parsing yaml, called [js-yaml](https://github.com/nodeca/js-yaml])
+2. Edit the following script cell. Run by *clicking* run button ▶️ or typing Ctrl-Enter.
 
-```bash | {type:'command', failed_when: 'exitCode != 0' }
-npm install js-yaml --no-save
-```
+   Extend the following code so that you can read the yaml contents and create files with the associated content. To help us parse the yaml, we use a package, called [js-yaml](https://github.com/nodeca/js-yaml]). 
 
-3. Create the following nodejs script by clicking the edit button in the notebook cell. Any updates you make will be updated live in the file.
+   To create the file content, take advantage of the following functions:
 
+     * `fs.writeFileSync(path, stringContent)`
+     * `fs.existsSync( path )`
+     * `fs.mkdirSync( path )`
+     * `fs.chmodSync(path, octalValue)`
 
-```js |{type:'file', path: 'yaml.js'}
+```js |{type:'script'}
 const yaml = require('js-yaml');
 const fs = require('fs');
-const doc = yaml.safeLoad(fs.readFileSync('resources/objects.yaml', 'utf8'));
+const doc = yaml.safeLoad(fs.readFileSync('/tmp/resources/objects.yaml', 'utf8'));
 for( var obj of doc.objects )
 {
    console.log( obj );
@@ -78,29 +82,16 @@ for( var obj of doc.objects )
 }
 ```
 
-**Useful functions**:
-
-  * `fs.writeFileSync(path, stringContent)`
-  * `fs.existsSync( path )`
-  * `fs.mkdirSync( path )`
-  * `fs.chmodSync(path, octalValue)`
- 
-
-
-4. Run `node yaml.js` to run your code. You may also use the terminal to help you debug any problems.
-
-```bash|{type:'repl'}
-```
 
 ### Checking your work
 
-5. To verify your solution is correct, run the following cell to check your code.
+4. To verify your solution is correct, run the following cell to check your code.
 
 ```bash | {type: 'command', shell: 'bash'}
 # Checking for files with content
-grep "for this object" objects/biblo.txt
-grep "string" objects/tango.txt
-grep "free" objects/aditi.txt
+grep "for this object" /tmp/objects/biblo.txt
+grep "string" /tmp/objects/tango.txt
+grep "free" /tmp/objects/aditi.txt
 
 # Checking read-only property
 STAT=$(stat objects/aditi.txt -c%A)
