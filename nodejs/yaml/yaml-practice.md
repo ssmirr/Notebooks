@@ -38,9 +38,10 @@ The same content could also be represented as JSON, as follows:
 
 You can read a [nice overview](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) on the syntax, especially rules related to representing strings. But first, we will make a first pass in understanding it by parsing and doing something with YAML. 
 
-1. Create the following yaml document by *clicking* the edit button 📝 in the notebook cell. 
+### Creating a yaml file
 
-   Any updates you make will inside the cell be updated in the file, after you leave focus.
+Create the following yaml document by *clicking* the edit button 📝 in the notebook cell. 
+Any updates you make will inside the cell be updated in the file, after you leave focus.
 
 ```yaml |{type:'file', path: '/tmp/resources/objects.yaml'}
 objects:
@@ -57,16 +58,30 @@ objects:
 
 ```
 
-2. Edit the following script cell. Run by *clicking* run button ▶️ or typing Ctrl-Enter.
+### Parsing yaml with node
 
-   Extend the following code so that you can read the yaml contents and create files with the associated content. To help us parse the yaml, we use a package, called [js-yaml](https://github.com/nodeca/js-yaml]). 
+To help us parse the yaml, we use a package, called [js-yaml](https://github.com/nodeca/js-yaml]).
+`js-yaml` will help use turn the yaml into a JSON object that can be manipulated and used in code.
 
-   To create the file content, take advantage of the following functions:
+Run the following code by *clicking* run button ▶️ or typing Ctrl-Enter. You should see the JSON representation of the yaml file printed out.
 
-     * `fs.writeFileSync(path, stringContent)`
-     * `fs.existsSync( path )`
-     * `fs.mkdirSync( path )`
-     * `fs.chmodSync(path, octalValue)`
+```js |{type:'script'}
+const yaml = require('js-yaml');
+const fs = require('fs');
+const doc = yaml.safeLoad(fs.readFileSync('/tmp/resources/objects.yaml', 'utf8'));
+console.log( doc );
+```
+
+Now, let's extend the code so that you can process the yaml contents. In this case, we will use the yaml file to dynamically create files with the associated content. You could imagine a more advanced version of this being used to help create configuration files for a program.
+
+### Simple yaml-based file creation tool.
+
+Edit the following script cell. To dynamically create the files and write content, take advantage of the following functions:
+
+* `fs.writeFileSync(path, stringContent)`
+* `fs.existsSync( path )`
+* `fs.mkdirSync( path )`
+* `fs.chmodSync(path, octalValue)`
 
 ```js |{type:'script'}
 const yaml = require('js-yaml');
@@ -85,7 +100,7 @@ for( var obj of doc.objects )
 
 ### Checking your work
 
-3. To verify your solution is correct, run the following cell to check your code.
+To verify your solution is correct, run the following cell to check your code.
 
 ```bash | {type: 'command', shell: 'bash'}
 # Checking for files with content
