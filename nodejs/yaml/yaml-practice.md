@@ -68,7 +68,8 @@ Run the following code by *clicking* run button ▶️ or typing Ctrl-Enter. You
 ```js |{type:'script'}
 const yaml = require('js-yaml');
 const fs = require('fs');
-const doc = yaml.safeLoad(fs.readFileSync('/tmp/resources/objects.yaml', 'utf8'));
+const dir = require('os').tmpdir();
+const doc = yaml.safeLoad(fs.readFileSync(`${dir}/resources/objects.yaml`, 'utf8'));
 console.log( doc );
 ```
 
@@ -86,13 +87,14 @@ Edit the following script cell. To dynamically create the files and write conten
 ```js |{type:'script'}
 const yaml = require('js-yaml');
 const fs = require('fs');
-const doc = yaml.safeLoad(fs.readFileSync('/tmp/resources/objects.yaml', 'utf8'));
+const dir = require('os').tmpdir();
+const doc = yaml.safeLoad(fs.readFileSync(`${dir}/resources/objects.yaml`, 'utf8'));
 for( var obj of doc.objects )
 {
-   console.log( obj );
-   // TODO: Create file with obj.name, filled with obj.content inside an "objects" directory.
-
-   // TODO: If readonly attribute exists, remove writable attribute. 
+    console.log( obj );
+    // TODO: Create file with obj.name, filled with obj.content inside an "objects" directory.
+  
+    // TODO: If readonly attribute exists, remove writable attribute. 
    
 }
 ```
