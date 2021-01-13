@@ -69,7 +69,7 @@ Run the following code by *clicking* run button ▶️ or typing Ctrl-Enter. You
 const yaml = require('js-yaml');
 const fs = require('fs');
 const dir = require('os').tmpdir();
-const doc = yaml.safeLoad(fs.readFileSync(`${dir}/resources/objects.yaml`, 'utf8'));
+const doc = yaml.load(fs.readFileSync(`${dir}/resources/objects.yaml`, 'utf8'));
 console.log( doc );
 ```
 
@@ -88,7 +88,7 @@ Edit the following script cell. To dynamically create the files and write conten
 const yaml = require('js-yaml');
 const fs = require('fs');
 const dir = require('os').tmpdir();
-const doc = yaml.safeLoad(fs.readFileSync(`${dir}/resources/objects.yaml`, 'utf8'));
+const doc = yaml.load(fs.readFileSync(`${dir}/resources/objects.yaml`, 'utf8'));
 
 for( var obj of doc.objects )
 {
