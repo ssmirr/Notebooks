@@ -41,9 +41,13 @@ Query parameters can be provided to provide additional information to the reques
 
 Let's see how a client application can communicate with a server using a REST API call.
 
+1. Here we are sending a plain request, using the `GET` verb and providing the resource path `/anything`. We will not get back much, except information about our original request.
+
 ```bash | {type: 'command',failed_when: 'exitCode!=0'}
 curl --request GET https://httpbin.org/anything
 ```
+
+2. Here we a sending a request with a payload. Using the `PUT` verb, we send JSON data in our request body to the server. We add headers to our request in order to let the server know we are encoding our request body as JSON.
 
 ```bash | {type: 'command', failed_when: 'exitCode!=0'}
 curl --request PUT -H "Content-Type: application/json" --data '{"coffee":1,"milk":1,"sugar":1,"chocolate":1}' https://httpbin.org/anything
@@ -51,7 +55,7 @@ curl --request PUT -H "Content-Type: application/json" --data '{"coffee":1,"milk
 
 #### Requests and Responses
 
-Once you send a request to a server, you will get back a [response](https://www.tutorialspoint.com/http/http_message_examples.htm) typically is composed of several parts: including headers, status code, and body.
+Once you send a request to a server, you will get back a [response](https://www.tutorialspoint.com/http/http_message_examples.htm). A response typically is composed of several parts: including headers, status code, and body.
 
 <img src="https://github.com/CSC-510/REST/blob/master/img/http.png?raw=true" width=50%>
 
