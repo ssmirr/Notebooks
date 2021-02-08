@@ -97,9 +97,6 @@ const headers = // Configure our headers to use our token when making REST api r
 	'Authorization': 'Bearer ' + require('fs').readFileSync('TOKEN').toString()
 };
 
-( async () => {
-
-
 let response = await got('https://api.digitalocean.com/v2/regions', { headers: headers, responseType: 'json' })
                     .catch(err => console.error(`listRegions ${err}`));
 
@@ -109,9 +106,6 @@ for( var region of response.body.regions)
 {
     console.log( /*Fill in me*/ ); 
 }
-
-})()
-
 ```
 
 2. **List images**: *Complete the code* to retrieve the [available system images](https://developers.digitalocean.com/documentation/v2/#images). Note by appending `?type=distribution`, you can exclude custom made images. Note, that some images are only available in some regions.
@@ -125,13 +119,9 @@ const headers = // Configure our headers to use our token when making REST api r
 	'Authorization': 'Bearer ' + require('fs').readFileSync('TOKEN').toString()
 };
 
-( async () => {
-
-
 let response = await got('https://api.digitalocean.com/v2/', { headers: headers, responseType: 'json' })
                     .catch(err => console.error(`listImages ${err}`));
 
-})()
 
 ```
 
@@ -147,8 +137,6 @@ const headers = // Configure our headers to use our token when making REST api r
 	'Content-Type':'application/json',
 	'Authorization': 'Bearer ' + require('fs').readFileSync('TOKEN').toString()
 };
-
-( async () => {
 
 var name = "YourName" // Fill in your name!
 var region = ""; // Fill one in from #1
@@ -199,8 +187,6 @@ async function createDroplet (dropletName, region, imageName )
     }
 }
 
-})()
-
 ```
 
 4. **Get Droplet Information**: Although we have a droplet, we don't know much about it, even it's IP address! Using the [api end point for retrieving a droplet](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-droplet-by-id), print out the ip address.
@@ -214,13 +200,8 @@ const headers = // Configure our headers to use our token when making REST api r
 	'Authorization': 'Bearer ' + require('fs').readFileSync('TOKEN').toString()
 };
 
-( async () => {
-
-
 let response = await got('https://api.digitalocean.com/v2/droplets', { headers: headers, responseType: 'json' })
                     .catch(err => console.error(`listImages ${err}`));
-
-})()
 
 ```
 
@@ -241,11 +222,8 @@ const headers = // Configure our headers to use our token when making REST api r
 	'Authorization': 'Bearer ' + require('fs').readFileSync('TOKEN').toString()
 };
 
-( async () => {
-
 /* Fill in your code here! */
 
-})()
 ```
 
 7. **Ping**: Ensure you can *no longer* communicate with your server by pinging its IP address. Update with the following with your IP address from step 4 above.
