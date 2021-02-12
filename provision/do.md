@@ -21,6 +21,9 @@ curl -X GET -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN
 
 If you see some JSON results related to your account, that means you've succeeded in authenicating with your API token!
 
+📹 **Watch** the video for an overview of the workshop, and see some live coding in action.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5KvdO0uPk6c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Understanding REST APIs
 
