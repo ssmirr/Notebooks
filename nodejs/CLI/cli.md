@@ -40,7 +40,7 @@ npm install yargs --no-save
 
 1. Let's first create our sample program and see what it does.
 
-```js | {type: 'file', path: 'cli.js'}
+```js | {type: 'file', path: '/tmp/cli.js'}
 require('yargs')
   .usage('$0 <cmd> [args]')
   .command('area [type]', "calc area", (yargs) => 
